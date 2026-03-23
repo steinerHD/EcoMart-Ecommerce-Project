@@ -14,5 +14,5 @@ Universidad Autónoma de Occidente
 ## Stack
 
 - **Frontend:** React 18, Vite, Axios
-- **Backend:** Spring Boot 3, Spring Security, JWT, JPA/Hibernate
+- **Backend:** Spring Boot 4, Spring Security, JWT, JPA/Hibernate
 - **Base de datos:** PostgreSQL 15

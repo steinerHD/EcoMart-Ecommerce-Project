@@ -1,7 +1,9 @@
+import LoginForm from "../components/auth/LoginForm";
+
 const LoginPage = () => {
   return (
     <main>
-      <h2>Login — pendiente HU-02</h2>
+      <LoginForm />
     </main>
   );
 };

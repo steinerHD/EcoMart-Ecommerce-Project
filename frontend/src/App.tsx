@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "./components/common/ProtectedRoute";
+import Navbar from "./components/common/Navbar";
+import Footer from "./components/common/Footer";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import ProductosPage from "./pages/ProductosPage";
@@ -9,30 +11,43 @@ import ConfirmacionPage from "./pages/ConfirmacionPage";
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to="/productos" replace />} />
+      <div className="d-flex flex-column min-vh-100">
 
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Navbar />
 
-        <Route path="/productos" element={
-          <ProtectedRoute>
-            <ProductosPage />
-          </ProtectedRoute>
-        } />
+        <main className="flex-grow-1">
+          <Routes>
+            <Route path="/" element={<Navigate to="/productos" replace />} />
 
-        <Route path="/carrito" element={
-          <ProtectedRoute>
-            <CarritoPage />
-          </ProtectedRoute>
-        } />
+            {/* Rutas públicas */}
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
 
-        <Route path="/confirmacion" element={
-          <ProtectedRoute>
-            <ConfirmacionPage />
-          </ProtectedRoute>
-        } />
-      </Routes>
+            {/* Rutas protegidas */}
+            <Route path="/productos" element={
+              <ProtectedRoute>
+                <ProductosPage />
+              </ProtectedRoute>
+            } />
+
+            <Route path="/carrito" element={
+              <ProtectedRoute>
+                <CarritoPage />
+              </ProtectedRoute>
+            } />
+
+            <Route path="/confirmacion" element={
+              <ProtectedRoute>
+                <ConfirmacionPage />
+              </ProtectedRoute>
+            } />
+
+          </Routes>
+        </main>
+
+        <Footer />
+
+      </div>
     </BrowserRouter>
   );
 };

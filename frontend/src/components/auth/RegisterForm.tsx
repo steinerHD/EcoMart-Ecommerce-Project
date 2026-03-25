@@ -4,6 +4,7 @@ import { authService } from "../../services/authService";
 import { useAuth } from "../../hooks/useAuth";
 import Button from "../common/Button";
 import Input from "../common/Input";
+import bgImage from "../../assets/gradBG.png";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -79,8 +80,9 @@ const RegisterForm = () => {
     <div
       className="min-vh-100 d-flex align-items-center justify-content-center px-3"
       style={{
-        background:
-          "linear-gradient(160deg, #728156 0%, #88976C 60%, #728156 100%)",
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <div className="card shadow-lg w-100" style={{ maxWidth: "480px" }}>

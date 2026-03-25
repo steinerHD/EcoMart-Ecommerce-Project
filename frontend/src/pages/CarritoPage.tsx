@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useCarrito } from "../hooks/useCarrito";
 import CarritoItem from "../components/carrito/CarritoItem";
 import CarritoResumen from "../components/carrito/CarritoResumen";
@@ -6,13 +7,31 @@ import { carritoService } from "../services/carritoService";
 
 const CarritoPage = () => {
   const { carrito, loading, recargarCarrito } = useCarrito();
+  const [loadingCheckout, setLoadingCheckout] = useState(false);
 
   // ─────────────────────────────────────────
-  // Handlers — se implementan en HU-06 y HU-07
+  // Actualizar cantidad — HU-06
+  // ─────────────────────────────────────────
+
+  const handleActualizar = async (id: number, cantidad: number) => {
+    try {
+      await carritoService.actualizarItem(id, { cantidad });
+      await recargarCarrito();
+    } catch (error: any) {
+      console.error("Error al actualizar item:", error);
+    }
+  };
+
+  // ─────────────────────────────────────────
+  // Eliminar item — pendiente HU-07
   // ─────────────────────────────────────────
 
   const handleEliminar = async (_id: number) => {};
-  const handleActualizar = async (_id: number, _cantidad: number) => {};
+
+  // ─────────────────────────────────────────
+  // Checkout — pendiente HU-08
+  // ─────────────────────────────────────────
+
   const handleCheckout = () => {};
 
   // ─────────────────────────────────────────
@@ -86,7 +105,7 @@ const CarritoPage = () => {
             total={carrito.total}
             cantidadItems={carrito.cantidadItems}
             onCheckout={handleCheckout}
-            loadingCheckout={false}
+            loadingCheckout={loadingCheckout}
           />
         </div>
 

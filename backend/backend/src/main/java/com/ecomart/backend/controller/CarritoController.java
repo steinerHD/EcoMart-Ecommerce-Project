@@ -1,5 +1,6 @@
 package com.ecomart.backend.controller;
 
+import com.ecomart.backend.dto.request.ActualizarItemRequest;
 import com.ecomart.backend.dto.request.AgregarItemRequest;
 import com.ecomart.backend.dto.response.CarritoResponse;
 import com.ecomart.backend.service.CarritoService;
@@ -27,5 +28,12 @@ public class CarritoController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(carritoService.agregarItem(request));
+    }
+
+    @PutMapping("/items/{id}")
+    public ResponseEntity<CarritoResponse> actualizarItem(
+            @PathVariable Long id,
+            @Valid @RequestBody ActualizarItemRequest request) {
+        return ResponseEntity.ok(carritoService.actualizarItem(id, request));
     }
 }

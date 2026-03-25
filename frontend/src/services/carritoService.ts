@@ -22,6 +22,10 @@ export interface AgregarItemRequest {
   cantidad: number;
 }
 
+export interface ActualizarItemRequest {
+  cantidad: number;
+}
+
 export const carritoService = {
   obtenerCarrito: async (): Promise<CarritoResponse> => {
     const response = await api.get<CarritoResponse>("/carrito");
@@ -30,6 +34,17 @@ export const carritoService = {
 
   agregarItem: async (data: AgregarItemRequest): Promise<CarritoResponse> => {
     const response = await api.post<CarritoResponse>("/carrito/items", data);
+    return response.data;
+  },
+
+  actualizarItem: async (
+    id: number,
+    data: ActualizarItemRequest
+  ): Promise<CarritoResponse> => {
+    const response = await api.put<CarritoResponse>(
+      `/carrito/items/${id}`,
+      data
+    );
     return response.data;
   },
 };

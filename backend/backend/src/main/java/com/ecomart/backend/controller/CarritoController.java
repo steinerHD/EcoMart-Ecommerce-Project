@@ -36,4 +36,10 @@ public class CarritoController {
             @Valid @RequestBody ActualizarItemRequest request) {
         return ResponseEntity.ok(carritoService.actualizarItem(id, request));
     }
+
+    @DeleteMapping("/items/{id}")
+    public ResponseEntity<CarritoResponse> eliminarItem(
+            @PathVariable Long id) {
+        return ResponseEntity.ok(carritoService.eliminarItem(id));
+    }
 }

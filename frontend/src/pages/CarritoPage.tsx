@@ -23,16 +23,23 @@ const CarritoPage = () => {
   };
 
   // ─────────────────────────────────────────
-  // Eliminar item — pendiente HU-07
+  // Eliminar item — HU-07
   // ─────────────────────────────────────────
 
-  const handleEliminar = async (_id: number) => {};
+  const handleEliminar = async (id: number) => {
+    try {
+      await carritoService.eliminarItem(id);
+      await recargarCarrito();
+    } catch (error: any) {
+      console.error("Error al eliminar item:", error);
+    }
+  };
 
   // ─────────────────────────────────────────
   // Checkout — pendiente HU-08
   // ─────────────────────────────────────────
 
-  const handleCheckout = () => {};
+  const handleCheckout = () => { };
 
   // ─────────────────────────────────────────
   // Loading

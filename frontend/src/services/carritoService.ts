@@ -47,4 +47,11 @@ export const carritoService = {
     );
     return response.data;
   },
+
+  eliminarItem: async (id: number): Promise<CarritoResponse> => {
+    const response = await api.delete<CarritoResponse>(
+      `/carrito/items/${id}`
+    );
+    return response.data;
+  },
 };

@@ -158,6 +158,36 @@ public class CarritoService {
         }
 
         // ─────────────────────────────────────────
+        // Eliminar item del carrito
+        // ─────────────────────────────────────────
+
+        @Transactional
+        public CarritoResponse eliminarItem(Long itemId) {
+                Usuario usuario = obtenerUsuarioAutenticado();
+
+                // 1. Buscar el carrito activo del usuario
+                Carrito carrito = carritoRepository
+                                .findByUsuarioIdAndEstado(
+                                                usuario.getId(),
+                                                Carrito.EstadoCarrito.activo)
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "No hay carrito activo para el usuario"));
+
+                // 2. Buscar el item en el carrito
+                ItemCarrito item = carrito.getItems().stream()
+                                .filter(i -> i.getId().equals(itemId))
+                                .findFirst()
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "Item no encontrado en el carrito: " + itemId));
+
+                // 3. Eliminar el item
+                carrito.getItems().remove(item);
+                carritoRepository.save(carrito);
+
+                return CarritoMapper.toCarritoResponse(carrito);
+        }
+
+        // ─────────────────────────────────────────
         // Obtener usuario autenticado
         // ─────────────────────────────────────────
 

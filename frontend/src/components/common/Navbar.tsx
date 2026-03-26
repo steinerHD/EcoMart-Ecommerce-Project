@@ -52,7 +52,7 @@ const Navbar = () => {
               <>
                 {/* Productos */}
                 <li className="nav-item">
-                  <Link className="nav-link" to="/productos">
+                  <Link className="nav-link text-white" to="/productos">
                     Productos
                   </Link>
                 </li>
@@ -60,7 +60,7 @@ const Navbar = () => {
                 {/* Carrito */}
                 <li className="nav-item">
                   <Link
-                    className="nav-link d-flex align-items-center gap-1"
+                    className="nav-link d-flex text-white align-items-center gap-1"
                     to="/carrito"
                   >
                     Carrito
@@ -75,7 +75,7 @@ const Navbar = () => {
                 {/* Usuario */}
                 <li className="nav-item">
                   <span
-                    className="nav-link"
+                    className="nav-link text-white"
                     style={{
                       color: "var(--color-50)",
                       fontSize: "var(--text-sm)",
@@ -88,7 +88,7 @@ const Navbar = () => {
                 {/* Logout */}
                 <li className="nav-item">
                   <button
-                    className="btn btn-outline-primary"
+                    className="btn btn-outline-light"
                     onClick={handleLogout}
                   >
                     Cerrar sesión
@@ -98,12 +98,12 @@ const Navbar = () => {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link className="btn btn-outline-primary px-4" to="/login">
+                  <Link className="btn btn-outline-light border border-white px-4" to="/login">
                     Iniciar sesión
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="btn btn-primary px-4" to="/register">
+                  <Link className="btn btn-outline-light border border-white px-4" to="/register">
                     Registrarse
                   </Link>
                 </li>

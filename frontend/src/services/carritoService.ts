@@ -26,6 +26,20 @@ export interface ActualizarItemRequest {
   cantidad: number;
 }
 
+export interface PedidoResponse {
+  id: number;
+  total: number;
+  estado: string;
+  createdAt: string;
+  items: {
+    id: number;
+    nombreProducto: string;
+    cantidad: number;
+    precioUnitario: number;
+    subtotal: number;
+  }[];
+}
+
 export const carritoService = {
   obtenerCarrito: async (): Promise<CarritoResponse> => {
     const response = await api.get<CarritoResponse>("/carrito");
@@ -52,6 +66,11 @@ export const carritoService = {
     const response = await api.delete<CarritoResponse>(
       `/carrito/items/${id}`
     );
+    return response.data;
+  },
+
+  checkout: async (): Promise<PedidoResponse> => {
+    const response = await api.post<PedidoResponse>("/carrito/checkout");
     return response.data;
   },
 };

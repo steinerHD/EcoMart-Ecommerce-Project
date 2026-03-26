@@ -3,22 +3,28 @@ package com.ecomart.backend.service;
 import com.ecomart.backend.dto.request.ActualizarItemRequest;
 import com.ecomart.backend.dto.request.AgregarItemRequest;
 import com.ecomart.backend.dto.response.CarritoResponse;
+import com.ecomart.backend.dto.response.PedidoResponse;
 import com.ecomart.backend.exception.BadRequestException;
 import com.ecomart.backend.exception.ResourceNotFoundException;
 import com.ecomart.backend.mapper.CarritoMapper;
+import com.ecomart.backend.mapper.PedidoMapper;
 import com.ecomart.backend.model.Carrito;
 import com.ecomart.backend.model.ItemCarrito;
+import com.ecomart.backend.model.ItemPedido;
+import com.ecomart.backend.model.Pedido;
 import com.ecomart.backend.model.Producto;
 import com.ecomart.backend.model.Usuario;
 import com.ecomart.backend.repository.CarritoRepository;
 import com.ecomart.backend.repository.ItemCarritoRepository;
+import com.ecomart.backend.repository.PedidoRepository;
 import com.ecomart.backend.repository.ProductoRepository;
 import com.ecomart.backend.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,6 +35,7 @@ public class CarritoService {
         private final UsuarioRepository usuarioRepository;
         private final ProductoRepository productoRepository;
         private final ItemCarritoRepository itemCarritoRepository;
+        private final PedidoRepository pedidoRepository;
 
         // ─────────────────────────────────────────
         // Obtener o crear carrito activo
@@ -199,5 +206,67 @@ public class CarritoService {
                 return usuarioRepository.findByEmail(email)
                                 .orElseThrow(() -> new ResourceNotFoundException(
                                                 "Usuario no encontrado: " + email));
+        }
+
+        // ─────────────────────────────────────────
+        // Checkout — confirmar compra
+        // ─────────────────────────────────────────
+
+        @Transactional
+        public PedidoResponse checkout() {
+                Usuario usuario = obtenerUsuarioAutenticado();
+
+                // 1. Buscar carrito activo
+                Carrito carrito = carritoRepository
+                                .findByUsuarioIdAndEstado(
+                                                usuario.getId(),
+                                                Carrito.EstadoCarrito.activo)
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "No hay carrito activo para el usuario"));
+
+                // 2. Validar que el carrito no esté vacío
+                if (carrito.getItems().isEmpty()) {
+                        throw new BadRequestException(
+                                        "No puedes confirmar una compra con el carrito vacío");
+                }
+
+                // 3. Calcular total
+                BigDecimal total = carrito.getItems().stream()
+                                .map(item -> item.getPrecioUnitario()
+                                                .multiply(BigDecimal.valueOf(item.getCantidad())))
+                                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+                // 4. Crear el pedido
+                Pedido pedido = Pedido.builder()
+                                .usuario(usuario)
+                                .carrito(carrito)
+                                .total(total)
+                                .estado(Pedido.EstadoPedido.pagado)
+                                .build();
+
+                // 5. Crear snapshot de los items
+                List<ItemPedido> itemsPedido = carrito.getItems().stream()
+                                .map(item -> {
+                                        BigDecimal subtotal = item.getPrecioUnitario()
+                                                        .multiply(BigDecimal.valueOf(item.getCantidad()));
+                                        return ItemPedido.builder()
+                                                        .pedido(pedido)
+                                                        .producto(item.getProducto())
+                                                        .nombreProducto(item.getProducto().getNombre())
+                                                        .cantidad(item.getCantidad())
+                                                        .precioUnitario(item.getPrecioUnitario())
+                                                        .subtotal(subtotal)
+                                                        .build();
+                                })
+                                .toList();
+
+                pedido.getItems().addAll(itemsPedido);
+                pedidoRepository.save(pedido);
+
+                // 6. Marcar carrito como completado
+                carrito.setEstado(Carrito.EstadoCarrito.completado);
+                carritoRepository.save(carrito);
+
+                return PedidoMapper.toPedidoResponse(pedido);
         }
 }

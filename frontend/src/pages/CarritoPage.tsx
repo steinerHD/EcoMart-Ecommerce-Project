@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useCarrito } from "../hooks/useCarrito";
 import CarritoItem from "../components/carrito/CarritoItem";
 import CarritoResumen from "../components/carrito/CarritoResumen";
@@ -8,6 +9,7 @@ import { carritoService } from "../services/carritoService";
 const CarritoPage = () => {
   const { carrito, loading, recargarCarrito } = useCarrito();
   const [loadingCheckout, setLoadingCheckout] = useState(false);
+  const navigate = useNavigate();
 
   // ─────────────────────────────────────────
   // Actualizar cantidad — HU-06
@@ -36,10 +38,25 @@ const CarritoPage = () => {
   };
 
   // ─────────────────────────────────────────
-  // Checkout — pendiente HU-08
+  // Checkout — HU-08
   // ─────────────────────────────────────────
 
-  const handleCheckout = () => { };
+  const handleCheckout = async () => {
+    setLoadingCheckout(true);
+    try {
+      const pedido = await carritoService.checkout();
+
+      // Recargar carrito para que quede vacío
+      await recargarCarrito();
+
+      // Redirigir a confirmación pasando el pedido
+      navigate("/confirmacion", { state: { pedido } });
+    } catch (error: any) {
+      console.error("Error al confirmar compra:", error);
+    } finally {
+      setLoadingCheckout(false);
+    }
+  };
 
   // ─────────────────────────────────────────
   // Loading

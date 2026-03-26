@@ -3,6 +3,7 @@ package com.ecomart.backend.controller;
 import com.ecomart.backend.dto.request.ActualizarItemRequest;
 import com.ecomart.backend.dto.request.AgregarItemRequest;
 import com.ecomart.backend.dto.response.CarritoResponse;
+import com.ecomart.backend.dto.response.PedidoResponse;
 import com.ecomart.backend.service.CarritoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -41,5 +42,12 @@ public class CarritoController {
     public ResponseEntity<CarritoResponse> eliminarItem(
             @PathVariable Long id) {
         return ResponseEntity.ok(carritoService.eliminarItem(id));
+    }
+
+    @PostMapping("/checkout")
+    public ResponseEntity<PedidoResponse> checkout() {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(carritoService.checkout());
     }
 }

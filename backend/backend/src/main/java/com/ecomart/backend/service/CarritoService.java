@@ -230,13 +230,23 @@ public class CarritoService {
                                         "No puedes confirmar una compra con el carrito vacío");
                 }
 
-                // 3. Calcular total
+                // 3. Validar stock de todos los productos antes de procesar
+                for (ItemCarrito item : carrito.getItems()) {
+                        Producto producto = item.getProducto();
+                        if (producto.getStock() < item.getCantidad()) {
+                                throw new BadRequestException(
+                                                "Stock insuficiente para: " + producto.getNombre()
+                                                                + ". Disponible: " + producto.getStock());
+                        }
+                }
+
+                // 4. Calcular total
                 BigDecimal total = carrito.getItems().stream()
                                 .map(item -> item.getPrecioUnitario()
                                                 .multiply(BigDecimal.valueOf(item.getCantidad())))
                                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-                // 4. Crear el pedido
+                // 5. Crear el pedido
                 Pedido pedido = Pedido.builder()
                                 .usuario(usuario)
                                 .carrito(carrito)
@@ -244,15 +254,21 @@ public class CarritoService {
                                 .estado(Pedido.EstadoPedido.pagado)
                                 .build();
 
-                // 5. Crear snapshot de los items
+                // 6. Crear snapshot de los items y reducir stock
                 List<ItemPedido> itemsPedido = carrito.getItems().stream()
                                 .map(item -> {
+                                        // Reducir stock del producto
+                                        Producto producto = item.getProducto();
+                                        producto.setStock(producto.getStock() - item.getCantidad());
+                                        productoRepository.save(producto);
+
                                         BigDecimal subtotal = item.getPrecioUnitario()
                                                         .multiply(BigDecimal.valueOf(item.getCantidad()));
+
                                         return ItemPedido.builder()
                                                         .pedido(pedido)
-                                                        .producto(item.getProducto())
-                                                        .nombreProducto(item.getProducto().getNombre())
+                                                        .producto(producto)
+                                                        .nombreProducto(producto.getNombre())
                                                         .cantidad(item.getCantidad())
                                                         .precioUnitario(item.getPrecioUnitario())
                                                         .subtotal(subtotal)
@@ -263,7 +279,7 @@ public class CarritoService {
                 pedido.getItems().addAll(itemsPedido);
                 pedidoRepository.save(pedido);
 
-                // 6. Marcar carrito como completado
+                // 7. Marcar carrito como completado
                 carrito.setEstado(Carrito.EstadoCarrito.completado);
                 carritoRepository.save(carrito);
 

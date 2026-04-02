@@ -305,14 +305,46 @@ a.link-primary:hover {
 
 .nav-link {
   font-size: var(--text-sm) !important;
-  color: var(--color-100) !important;
+  color: var(--color-white) !important;
   font-weight: var(--font-medium);
   transition: color 0.2s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
+  color: var(--color-100) !important;
+}
+
+/* Navbar botones blancos */
+.navbar .btn-outline-light {
   color: var(--color-white) !important;
+  border-color: var(--color-white) !important;
+}
+
+.navbar .btn-outline-light:hover {
+  background-color: var(--color-white) !important;
+  color: var(--color-800) !important;
+}
+
+.navbar .btn-light {
+  background-color: var(--color-white) !important;
+  border-color: var(--color-white) !important;
+  color: var(--color-800) !important;
+  font-weight: var(--font-semibold);
+}
+
+.navbar .btn-light:hover {
+  background-color: var(--color-100) !important;
+  border-color: var(--color-100) !important;
+  color: var(--color-900) !important;
+}
+
+/* Navbar brand blanco */
+.navbar-brand {
+  font-size: var(--text-lg) !important;
+  font-weight: var(--font-bold) !important;
+  color: var(--color-white) !important;
+  letter-spacing: 0.02em;
 }
 
 /* ─────────────────────────────────────────
@@ -394,4 +426,27 @@ hr {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-800);
+}
+
+/* Navbar botones blancos */
+.navbar .btn-outline-light {
+  color: var(--color-white) !important;
+  border-color: var(--color-white) !important;
+}
+
+.navbar .btn-outline-light:hover {
+  background-color: var(--color-white) !important;
+  color: var(--color-800) !important;
+}
+
+.navbar .btn-light {
+  background-color: var(--color-white) !important;
+  border-color: var(--color-white) !important;
+  color: var(--color-800) !important;
+}
+
+.navbar .btn-light:hover {
+  background-color: var(--color-100) !important;
+  border-color: var(--color-100) !important;
+  color: var(--color-900) !important;
 }

@@ -9,6 +9,7 @@
   --color-100: #68ee33;
   --color-50:  #E7F5DC;
   --color-white: #FFFFFF;
+  --color-1000: #0a5001;
 
   /* Tipografía */
   --text-xs:   0.875rem;   /* 14px — hints, badges */
@@ -195,7 +196,7 @@ a.link-primary:hover {
    Cards
 ───────────────────────────────────────── */
 .card {
-  background-color: var(--color-50) !important;
+  background-color: rgba(231, 245, 220, 0.4) !important; /* Semi-transparent to allow blur */
   border: 1px solid rgba(152, 167, 124, 0.3) !important;
   border-radius: var(--radius-lg) !important;
   color: var(--color-900) !important;
@@ -225,6 +226,9 @@ a.link-primary:hover {
 
 .card-body {
   padding: 1.75rem 1.5rem !important;
+  background-color: rgba(244, 236, 236, 0.703) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
 }
 
 .card-footer {

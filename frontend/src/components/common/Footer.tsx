@@ -20,7 +20,7 @@ const Footer = () => {
         >
           🌿 EcoMart — Comercio electrónico sostenible
         </p>
-        <small style={{ color: "var(--color-500)" }}>
+        <small style={{ color: "var(--color-1000)" }}>
           © {year} EcoMart. Ingeniería de Software — UAO
         </small>
       </div>

@@ -19,7 +19,7 @@ const Navbar = () => {
       className="navbar navbar-expand-lg sticky-top"
       style={{
         backgroundColor: "var(--color-800)",
-        borderBottom: "2px solid var(--color-white)",
+        boxShadow: "0 8px 24px rgba( 0,0,0,0.12 )",
       }}
     >
       <div className="container">
@@ -179,12 +179,12 @@ const Navbar = () => {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link className="btn btn-outline-primary px-4" to="/login">
+                  <Link className="btn btn-outline-light px-4 fw-bold shadow-sm" to="/login">
                     Iniciar sesión
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="btn btn-primary px-4" to="/register">
+                  <Link className="btn btn-light px-4 fw-bold shadow-sm" to="/register">
                     Registrarse
                   </Link>
                 </li>

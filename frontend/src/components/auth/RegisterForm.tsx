@@ -85,7 +85,26 @@ const RegisterForm = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="card shadow-lg w-100" style={{ maxWidth: "480px" }}>
+      <div className="container">
+        <div className="row align-items-center justify-content-center gap-4 gap-md-5">
+          <div className="col-12 col-md-5 text-center text-md-start">
+            <h1 
+              className="fw-bold" 
+              style={{
+                color: "var(--color-white)",
+                textShadow: "2px 2px 10px rgba(0,0,0,0.6)",
+                fontFamily: "var(--font-display)",
+                lineHeight: "1.2"
+              }}
+            >
+              <i style={{ fontSize: "2.4em", display: "inline-block", lineHeight: "1" }}>Lo que quieras,</i> 
+              <br /> justo cuando lo necesitas.
+            </h1>
+          </div>
+
+          {/* Formulario */}
+          <div className="col-12 col-md-5 d-flex justify-content-center">
+            <div className="card shadow-lg w-100" style={{ maxWidth: "480px" }}>
 
         {/* Header */}
         <div className="card-header text-center">
@@ -170,6 +189,9 @@ const RegisterForm = () => {
           </form>
         </div>
 
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

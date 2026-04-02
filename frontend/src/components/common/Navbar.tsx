@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useCarrito } from "../../hooks/useCarrito";
@@ -6,6 +7,7 @@ const Navbar = () => {
   const { user, logout, isAuthenticated } = useAuth();
   const { cantidadTotal } = useCarrito();
   const navigate = useNavigate();
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -72,28 +74,107 @@ const Navbar = () => {
                   </Link>
                 </li>
 
-                {/* Usuario */}
-                <li className="nav-item">
+                {/* Dropdown usuario */}
+                <li
+                  className="nav-item"
+                  style={{ position: "relative" }}
+                  onMouseEnter={() => setShowDropdown(true)}
+                  onMouseLeave={() => setShowDropdown(false)}
+                >
+                  {/* Nombre del usuario */}
                   <span
-                    className="nav-link"
+                    className="nav-link d-flex align-items-center gap-1"
                     style={{
                       color: "var(--color-50)",
-                      fontSize: "var(--text-sm)",
+                      cursor: "pointer",
+                      userSelect: "none",
                     }}
                   >
                     {user?.nombre} {user?.apellido}
+                    <span
+                      style={{
+                        fontSize: "var(--text-xs)",
+                        transition: "transform 0.2s ease",
+                        display: "inline-block",
+                        transform: showDropdown
+                          ? "rotate(180deg)"
+                          : "rotate(0deg)",
+                      }}
+                    >
+                      ▾
+                    </span>
                   </span>
+
+                  {/* Dropdown */}
+                  {showDropdown && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "100%",
+                        right: 0,
+                        minWidth: "180px",
+                        backgroundColor: "var(--color-50)",
+                        borderRadius: "var(--radius-md)",
+                        border: "1px solid rgba(114, 129, 86, 0.2)",
+                        boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+                        zIndex: 1000,
+                        overflow: "hidden",
+                      }}
+                    >
+                      {/* Mis pedidos */}
+                      <Link
+                        to="/pedidos"
+                        style={{
+                          display: "block",
+                          padding: "0.75rem 1rem",
+                          color: "var(--color-900)",
+                          fontSize: "var(--text-sm)",
+                          fontWeight: "var(--font-medium)",
+                          transition: "background-color 0.2s ease",
+                          borderBottom: "1px solid rgba(114, 129, 86, 0.15)",
+                        }}
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.backgroundColor =
+                            "var(--color-100)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.backgroundColor = "transparent")
+                        }
+                      >
+                        Mis pedidos
+                      </Link>
+
+                      {/* Cerrar sesión */}
+                      <button
+                        onClick={handleLogout}
+                        style={{
+                          display: "block",
+                          width: "100%",
+                          padding: "0.75rem 1rem",
+                          color: "var(--color-900)",
+                          fontSize: "var(--text-sm)",
+                          fontWeight: "var(--font-medium)",
+                          textAlign: "left",
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          transition: "background-color 0.2s ease",
+                        }}
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.backgroundColor =
+                            "var(--color-100)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.backgroundColor = "transparent")
+                        }
+                      >
+                        Cerrar sesión
+                      </button>
+
+                    </div>
+                  )}
                 </li>
 
-                {/* Logout */}
-                <li className="nav-item">
-                  <button
-                    className="btn btn-outline-primary"
-                    onClick={handleLogout}
-                  >
-                    Cerrar sesión
-                  </button>
-                </li>
               </>
             ) : (
               <>

@@ -7,6 +7,8 @@ import LoginPage from "./pages/LoginPage";
 import ProductosPage from "./pages/ProductosPage";
 import CarritoPage from "./pages/CarritoPage";
 import ConfirmacionPage from "./pages/ConfirmacionPage";
+import PedidosPage from "./pages/PedidosPage";
+
 
 const App = () => {
   return (
@@ -24,6 +26,12 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
 
             {/* Rutas protegidas */}
+            <Route path="/pedidos" element={
+              <ProtectedRoute>
+                <PedidosPage />
+              </ProtectedRoute>
+            } />
+
             <Route path="/productos" element={
               <ProtectedRoute>
                 <ProductosPage />

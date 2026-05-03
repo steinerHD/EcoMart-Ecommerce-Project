@@ -1,0 +1,16 @@
+# Java / Maven
+backend/backend/target/
+backend/backend/.mvn/
+*.class
+*.jar
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# PostgreSQL / IDE
+*.env
+.vscode/
+.idea/
+*.iml

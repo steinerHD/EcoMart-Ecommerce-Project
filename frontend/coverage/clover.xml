@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1777844002206" clover="3.2.0">
+  <project timestamp="1777844002206" name="All files">
+    <metrics statements="181" coveredstatements="142" conditionals="86" coveredconditionals="65" methods="50" coveredmethods="36" elements="317" coveredelements="243" complexity="0" loc="181" ncloc="181" packages="9" files="16" classes="16"/>
+    <package name="assets">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="gradBG.png" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\assets\gradBG.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="components.auth">
+      <metrics statements="74" coveredstatements="66" conditionals="30" coveredconditionals="21" methods="12" coveredmethods="12"/>
+      <file name="LoginForm.tsx" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\components\auth\LoginForm.tsx">
+        <metrics statements="34" coveredstatements="34" conditionals="12" coveredconditionals="11" methods="6" coveredmethods="6"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="67" type="stmt"/>
+        <line num="11" count="67" type="stmt"/>
+        <line num="13" count="67" type="stmt"/>
+        <line num="18" count="67" type="stmt"/>
+        <line num="19" count="67" type="stmt"/>
+        <line num="20" count="67" type="stmt"/>
+        <line num="22" count="67" type="stmt"/>
+        <line num="23" count="55" type="stmt"/>
+        <line num="24" count="55" type="stmt"/>
+        <line num="25" count="55" type="stmt"/>
+        <line num="26" count="55" type="stmt"/>
+        <line num="29" count="67" type="stmt"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="32" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="34" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="42" count="5" type="stmt"/>
+        <line num="43" count="5" type="stmt"/>
+        <line num="46" count="67" type="stmt"/>
+        <line num="47" count="5" type="stmt"/>
+        <line num="48" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="62" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
+        <line num="69" count="67" type="stmt"/>
+      </file>
+      <file name="RegisterForm.tsx" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\components\auth\RegisterForm.tsx">
+        <metrics statements="40" coveredstatements="32" conditionals="18" coveredconditionals="10" methods="6" coveredmethods="6"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="20" type="stmt"/>
+        <line num="11" count="20" type="stmt"/>
+        <line num="13" count="20" type="stmt"/>
+        <line num="20" count="20" type="stmt"/>
+        <line num="21" count="20" type="stmt"/>
+        <line num="22" count="20" type="stmt"/>
+        <line num="24" count="20" type="stmt"/>
+        <line num="25" count="14" type="stmt"/>
+        <line num="26" count="14" type="stmt"/>
+        <line num="27" count="14" type="stmt"/>
+        <line num="28" count="14" type="stmt"/>
+        <line num="31" count="20" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
+        <line num="34" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="35" count="3" type="stmt"/>
+        <line num="37" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="38" count="3" type="stmt"/>
+        <line num="40" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="46" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="48" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="52" count="3" type="stmt"/>
+        <line num="53" count="3" type="stmt"/>
+        <line num="56" count="20" type="stmt"/>
+        <line num="57" count="3" type="stmt"/>
+        <line num="58" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="79" count="20" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.carrito">
+      <metrics statements="29" coveredstatements="23" conditionals="15" coveredconditionals="12" methods="9" coveredmethods="7"/>
+      <file name="CarritoItem.tsx" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\components\carrito\CarritoItem.tsx">
+        <metrics statements="25" coveredstatements="19" conditionals="15" coveredconditionals="12" methods="7" coveredmethods="5"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="22" count="7" type="stmt"/>
+        <line num="23" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="27" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="41" count="7" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="50" count="7" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="115" count="1" type="stmt"/>
+      </file>
+      <file name="CarritoVacio.tsx" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\components\carrito\CarritoVacio.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.common">
+      <metrics statements="6" coveredstatements="6" conditionals="19" coveredconditionals="19" methods="2" coveredmethods="2"/>
+      <file name="Button.tsx" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\components\common\Button.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="12" coveredconditionals="12" methods="1" coveredmethods="1"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="25" count="102" type="stmt"/>
+        <line num="31" count="102" type="stmt"/>
+        <line num="36" count="102" type="stmt"/>
+      </file>
+      <file name="Input.tsx" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\components\common\Input.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="7" coveredconditionals="7" methods="1" coveredmethods="1"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="214" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.productos">
+      <metrics statements="22" coveredstatements="21" conditionals="12" coveredconditionals="11" methods="11" coveredmethods="9"/>
+      <file name="ProductoCard.tsx" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\components\productos\ProductoCard.tsx">
+        <metrics statements="17" coveredstatements="16" conditionals="10" coveredconditionals="9" methods="9" coveredmethods="7"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="9" type="stmt"/>
+        <line num="13" count="9" type="stmt"/>
+        <line num="14" count="9" type="stmt"/>
+        <line num="16" count="9" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="28" count="9" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="129" count="1" type="stmt"/>
+        <line num="147" count="1" type="stmt"/>
+      </file>
+      <file name="ProductoList.tsx" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\components\productos\ProductoList.tsx">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="context">
+      <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="AuthContext.tsx" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\context\AuthContext.tsx">
+        <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="42" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="hooks">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="useAuth.ts" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\hooks\useAuth.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="25" type="stmt"/>
+      </file>
+    </package>
+    <package name="services">
+      <metrics statements="32" coveredstatements="8" conditionals="8" coveredconditionals="0" methods="11" coveredmethods="1"/>
+      <file name="api.ts" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\services\api.ts">
+        <metrics statements="13" coveredstatements="3" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+      </file>
+      <file name="authService.ts" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\services\authService.ts">
+        <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+      </file>
+      <file name="carritoService.ts" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\services\carritoService.ts">
+        <metrics statements="11" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+      </file>
+      <file name="productoService.ts" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\services\productoService.ts">
+        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="formatCurrency.ts" path="C:\Users\Not_dtb\Desktop\Proyecto ecomart\EcoMart-Ecommerce-Project\frontend\src\utils\formatCurrency.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="23" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

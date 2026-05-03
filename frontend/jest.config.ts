@@ -1,0 +1,7 @@
+export default {
+  globals: {
+    "ts-jest": {
+      tsconfig: "./tsconfig.test.json"
+    }
+  }
+}

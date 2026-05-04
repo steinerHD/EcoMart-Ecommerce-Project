@@ -13,10 +13,6 @@ const CarritoPage = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
-  // ─────────────────────────────────────────
-  // Actualizar cantidad — HU-06
-  // ─────────────────────────────────────────
-
   const handleActualizar = async (id: number, cantidad: number) => {
     try {
       await carritoService.actualizarItem(id, { cantidad });
@@ -25,10 +21,6 @@ const CarritoPage = () => {
       console.error("Error al actualizar item:", error);
     }
   };
-
-  // ─────────────────────────────────────────
-  // Eliminar item — HU-07
-  // ─────────────────────────────────────────
 
   const handleEliminar = async (id: number) => {
     try {
@@ -39,16 +31,8 @@ const CarritoPage = () => {
     }
   };
 
-  // ─────────────────────────────────────────
-  // Checkout — HU-08
-  // ─────────────────────────────────────────
+  const handleCheckout = () => setShowModal(true);
 
-  // Abre el modal de confirmación
-  const handleCheckout = () => {
-    setShowModal(true);
-  };
-
-  // Confirma el checkout desde el modal
   const handleConfirmarCheckout = async () => {
     setLoadingCheckout(true);
     try {
@@ -63,86 +47,66 @@ const CarritoPage = () => {
     }
   };
 
-  // ─────────────────────────────────────────
-  // Loading
-  // ─────────────────────────────────────────
-
   if (loading) {
     return (
-      <div className="container py-5 text-center">
-        <div
-          className="spinner-border"
-          role="status"
-          style={{ color: "var(--color-800)" }}
-        >
-          <span className="visually-hidden">Cargando...</span>
+      <div className="bg-carrito">
+        <div className="container py-5 text-center">
+          <div className="spinner-border" role="status" style={{ color: "var(--color-800)" }}>
+            <span className="visually-hidden">Cargando...</span>
+          </div>
+          <p className="mt-3" style={{ color: "var(--color-300)" }}>Cargando carrito...</p>
         </div>
-        <p className="mt-3" style={{ color: "var(--color-300)" }}>
-          Cargando carrito...
-        </p>
       </div>
     );
   }
-
-  // ─────────────────────────────────────────
-  // Carrito vacío
-  // ─────────────────────────────────────────
 
   if (!carrito || carrito.items.length === 0) {
     return (
-      <div className="container py-5">
-        <CarritoVacio />
+      <div className="bg-carrito">
+        <div className="container py-5">
+          <CarritoVacio />
+        </div>
       </div>
     );
   }
 
-  // ─────────────────────────────────────────
-  // Carrito con items
-  // ─────────────────────────────────────────
-
   return (
     <>
-      <div className="container py-5">
+      <div className="bg-carrito">
+        <div className="container py-5">
 
-        {/* Título */}
-        <div className="mb-4">
-          <h2 style={{ fontFamily: "var(--font-display)" }}>
-            Mi carrito
-          </h2>
-          <p style={{ color: "var(--color-300)" }}>
-            {carrito.cantidadItems}{" "}
-            {carrito.cantidadItems === 1 ? "producto" : "productos"} en tu carrito
-          </p>
-        </div>
-
-        <div className="row g-4">
-
-          {/* Items */}
-          <div className="col-lg-8">
-            {carrito.items.map((item) => (
-              <CarritoItem
-                key={item.id}
-                item={item}
-                onEliminar={handleEliminar}
-                onActualizar={handleActualizar}
-              />
-            ))}
+          <div className="mb-4">
+            <h2 style={{ fontFamily: "var(--font-display)" }}>Mi carrito</h2>
+            <p style={{ color: "var(--color-300)" }}>
+              {carrito.cantidadItems}{" "}
+              {carrito.cantidadItems === 1 ? "producto" : "productos"} en tu carrito
+            </p>
           </div>
 
-          {/* Resumen */}
-          <div className="col-lg-4">
-            <CarritoResumen
-              total={carrito.total}
-              cantidadItems={carrito.cantidadItems}
-              onCheckout={handleCheckout}
-              loadingCheckout={loadingCheckout}
-            />
+          <div className="row g-4">
+            <div className="col-lg-8">
+              {carrito.items.map((item) => (
+                <CarritoItem
+                  key={item.id}
+                  item={item}
+                  onEliminar={handleEliminar}
+                  onActualizar={handleActualizar}
+                />
+              ))}
+            </div>
+            <div className="col-lg-4">
+              <CarritoResumen
+                total={carrito.total}
+                cantidadItems={carrito.cantidadItems}
+                onCheckout={handleCheckout}
+                loadingCheckout={loadingCheckout}
+              />
+            </div>
           </div>
 
         </div>
       </div>
 
-      {/* Modal de confirmación */}
       <ModalConfirmacion
         show={showModal}
         titulo="Confirmar compra"

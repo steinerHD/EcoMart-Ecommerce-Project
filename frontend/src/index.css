@@ -10,25 +10,21 @@
   --color-50:  #E7F5DC;
   --color-white: #FFFFFF;
 
-  /* Tipografía */
-  --text-xs:   0.875rem;   /* 14px — hints, badges */
-  --text-sm:   1rem;       /* 16px — labels, inputs, links */
-  --text-base: 1.125rem;   /* 18px — texto base del cuerpo */
-  --text-md:   1.25rem;    /* 20px — subtítulos */
-  --text-lg:   1.5rem;     /* 24px — títulos de sección */
-  --text-xl:   1.875rem;   /* 30px — títulos de página */
-  --text-2xl:  2.25rem;    /* 36px — títulos principales */
-  --text-3xl:  3rem;       /* 48px — hero / brand */
+  --text-xs:   0.875rem;
+  --text-sm:   1rem;
+  --text-base: 1.125rem;
+  --text-md:   1.25rem;
+  --text-lg:   1.5rem;
+  --text-xl:   1.875rem;
+  --text-2xl:  2.25rem;
+  --text-3xl:  3rem;
 
   --font-normal:   400;
   --font-medium:   500;
   --font-semibold: 600;
   --font-bold:     700;
 
-    /* Fuente base — textos, labels, inputs, botones */
-  --font-main: 'Inter', sans-serif;
-
-  /* Fuente de títulos — headers, brand, destacados */
+  --font-main:    'Inter', sans-serif;
   --font-display: 'Plus Jakarta Sans', sans-serif;
 
   --radius-sm: 6px;
@@ -54,6 +50,54 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* ─────────────────────────────────────────
+   Fondos fijos por página
+───────────────────────────────────────── */
+.bg-productos {
+  position: relative;
+  min-height: 100%;
+}
+.bg-productos::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url('/imagenes/super.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.45);
+}
+
+.bg-carrito {
+  position: relative;
+  min-height: 100%;
+}
+.bg-carrito::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url('/imagenes/super2.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.45);
+}
+
+.bg-confirmacion {
+  position: relative;
+  min-height: 100%;
+}
+.bg-confirmacion::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url('/imagenes/GranBibio.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.45);
 }
 
 /* ─────────────────────────────────────────
@@ -315,7 +359,6 @@ a.link-primary:hover {
   color: var(--color-100) !important;
 }
 
-/* Navbar botones blancos */
 .navbar .btn-outline-light {
   color: var(--color-white) !important;
   border-color: var(--color-white) !important;
@@ -337,14 +380,6 @@ a.link-primary:hover {
   background-color: var(--color-100) !important;
   border-color: var(--color-100) !important;
   color: var(--color-900) !important;
-}
-
-/* Navbar brand blanco */
-.navbar-brand {
-  font-size: var(--text-lg) !important;
-  font-weight: var(--font-bold) !important;
-  color: var(--color-white) !important;
-  letter-spacing: 0.02em;
 }
 
 /* ─────────────────────────────────────────
@@ -398,7 +433,7 @@ hr {
 }
 
 /* ─────────────────────────────────────────
-   Utilidades de texto con la paleta
+   Utilidades de texto
 ───────────────────────────────────────── */
 .text-white  { color: var(--color-white) !important; }
 .text-50     { color: var(--color-50)    !important; }
@@ -411,42 +446,7 @@ hr {
 /* ─────────────────────────────────────────
    Scrollbar
 ───────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-50);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-500);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-800);
-}
-
-/* Navbar botones blancos */
-.navbar .btn-outline-light {
-  color: var(--color-white) !important;
-  border-color: var(--color-white) !important;
-}
-
-.navbar .btn-outline-light:hover {
-  background-color: var(--color-white) !important;
-  color: var(--color-800) !important;
-}
-
-.navbar .btn-light {
-  background-color: var(--color-white) !important;
-  border-color: var(--color-white) !important;
-  color: var(--color-800) !important;
-}
-
-.navbar .btn-light:hover {
-  background-color: var(--color-100) !important;
-  border-color: var(--color-100) !important;
-  color: var(--color-900) !important;
-}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-50); }
+::-webkit-scrollbar-thumb { background: var(--color-500); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-800); }

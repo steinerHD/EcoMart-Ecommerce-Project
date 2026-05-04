@@ -8,6 +8,16 @@ interface ProductoCardProps {
   onAgregar: (productoId: number, cantidad: number) => Promise<void>;
 }
 
+// Mapa de imágenes locales por nombre de producto
+const imagenPorNombre: Record<string, string> = {
+  "Tote Bag Reciclada": "/imagenes/tote_bag.jpg",
+  "Botella Reutilizable": "/imagenes/botella.jpg",
+  "Cuaderno Kraft": "/imagenes/cuaderno.jpg",
+  "Camiseta Eco": "/imagenes/camiseta.jpg",
+  "Jabón Natural": "/imagenes/ja.jpg",
+  "Jabón Artesanal": "/imagenes/ja.jpg",
+};
+
 const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) => {
   const [cantidad, setCantidad] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -25,34 +35,37 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) => {
     }
   };
 
+  const imagenSrc = producto.imagenUrl || imagenPorNombre[producto.nombre];
+
   return (
     <div
       className="card h-100 shadow-sm"
       style={{ transition: "transform 0.2s ease" }}
-      onMouseEnter={(e) =>
-        (e.currentTarget.style.transform = "translateY(-4px)")
-      }
-      onMouseLeave={(e) =>
-        (e.currentTarget.style.transform = "translateY(0)")
-      }
+      onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-4px)")}
+      onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
     >
       {/* Imagen */}
       <div
         style={{
-          height: "180px",
-          backgroundColor: "var(--color-300)",
+          height: "140px",
+          backgroundColor: "var(--color-50)",
           borderRadius: "var(--radius-lg) var(--radius-lg) 0 0",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
+          padding: "0.5rem",
         }}
       >
-        {producto.imagenUrl ? (
+        {imagenSrc ? (
           <img
-            src={producto.imagenUrl}
+            src={imagenSrc}
             alt={producto.nombre}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+            }}
           />
         ) : (
           <span style={{ fontSize: "3rem" }}>📦</span>
@@ -62,28 +75,19 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) => {
       {/* Body */}
       <div className="card-body d-flex flex-column gap-2">
 
-        {/* Categoria */}
         {producto.categoriaNombre && (
-          <span
-            className="badge bg-primary"
-            style={{ alignSelf: "flex-start" }}
-          >
+          <span className="badge bg-primary" style={{ alignSelf: "flex-start" }}>
             {producto.categoriaNombre}
           </span>
         )}
 
-        {/* Nombre */}
         <h5
           className="mb-0"
-          style={{
-            fontFamily: "var(--font-display)",
-            color: "var(--color-900)",
-          }}
+          style={{ fontFamily: "var(--font-display)", color: "var(--color-900)" }}
         >
           {producto.nombre}
         </h5>
 
-        {/* Descripcion */}
         {producto.descripcion && (
           <p
             className="mb-0"
@@ -100,7 +104,6 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) => {
           </p>
         )}
 
-        {/* Precio */}
         <p
           className="mb-0"
           style={{
@@ -112,17 +115,11 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) => {
           {formatCurrency(producto.precio)}
         </p>
 
-        {/* Stock */}
         <small style={{ color: "var(--color-800)" }}>
-          {producto.stock > 0
-            ? `${producto.stock} disponibles`
-            : "Sin stock"}
+          {producto.stock > 0 ? `${producto.stock} disponibles` : "Sin stock"}
         </small>
 
-        {/* Selector cantidad y botón */}
         <div className="d-flex align-items-center gap-2 mt-auto pt-2">
-
-          {/* Control cantidad */}
           <div className="d-flex align-items-center gap-2">
             <button
               className="btn btn-outline-primary btn-sm"
@@ -143,16 +140,13 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) => {
             </span>
             <button
               className="btn btn-outline-primary btn-sm"
-              onClick={() =>
-                setCantidad((prev) => Math.min(producto.stock, prev + 1))
-              }
+              onClick={() => setCantidad((prev) => Math.min(producto.stock, prev + 1))}
               disabled={cantidad >= producto.stock}
             >
               +
             </button>
           </div>
 
-          {/* Botón agregar */}
           <Button
             size="sm"
             fullWidth
@@ -162,7 +156,6 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) => {
           >
             {agregado ? "Agregado ✓" : "Agregar"}
           </Button>
-
         </div>
       </div>
     </div>

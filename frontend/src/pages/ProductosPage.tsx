@@ -11,10 +11,6 @@ const ProductosPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // ─────────────────────────────────────────
-  // Cargar productos
-  // ─────────────────────────────────────────
-
   useEffect(() => {
     const cargarProductos = async () => {
       setLoading(true);
@@ -27,67 +23,43 @@ const ProductosPage = () => {
         setLoading(false);
       }
     };
-
     cargarProductos();
   }, []);
-
-  // ─────────────────────────────────────────
-  // Agregar al carrito
-  // ─────────────────────────────────────────
 
   const handleAgregar = async (productoId: number, cantidad: number) => {
     await carritoService.agregarItem({ productoId, cantidad });
     await recargarCarrito();
   };
 
-  // ─────────────────────────────────────────
-  // Render
-  // ─────────────────────────────────────────
-
   return (
-    <div className="container py-5">
+    <div className="bg-productos">
+      <div className="container py-5">
 
-      {/* Título */}
-      <div className="mb-4">
-        <h2 style={{ fontFamily: "var(--font-display)" }}>
-          Productos
-        </h2>
-        <p style={{ color: "var(--color-300)" }}>
-          Selecciona los productos que deseas agregar a tu carrito
-        </p>
-      </div>
-
-      {/* Loading */}
-      {loading && (
-        <div className="text-center py-5">
-          <div
-            className="spinner-border"
-            role="status"
-            style={{ color: "var(--color-800)" }}
-          >
-            <span className="visually-hidden">Cargando...</span>
-          </div>
-          <p className="mt-3" style={{ color: "var(--color-300)" }}>
-            Cargando productos...
+        <div className="mb-4">
+          <h2 style={{ fontFamily: "var(--font-display)" }}>Productos</h2>
+          <p style={{ color: "var(--color-300)" }}>
+            Selecciona los productos que deseas agregar a tu carrito
           </p>
         </div>
-      )}
 
-      {/* Error */}
-      {error && (
-        <div className="alert alert-danger" role="alert">
-          ⚠️ {error}
-        </div>
-      )}
+        {loading && (
+          <div className="text-center py-5">
+            <div className="spinner-border" role="status" style={{ color: "var(--color-800)" }}>
+              <span className="visually-hidden">Cargando...</span>
+            </div>
+            <p className="mt-3" style={{ color: "var(--color-300)" }}>Cargando productos...</p>
+          </div>
+        )}
 
-      {/* Lista de productos */}
-      {!loading && !error && (
-        <ProductoList
-          productos={productos}
-          onAgregar={handleAgregar}
-        />
-      )}
+        {error && (
+          <div className="alert alert-danger" role="alert">⚠️ {error}</div>
+        )}
 
+        {!loading && !error && (
+          <ProductoList productos={productos} onAgregar={handleAgregar} />
+        )}
+
+      </div>
     </div>
   );
 };

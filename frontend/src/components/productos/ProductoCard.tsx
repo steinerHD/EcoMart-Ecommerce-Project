@@ -8,7 +8,6 @@ interface ProductoCardProps {
   onAgregar: (productoId: number, cantidad: number) => Promise<void>;
 }
 
-// Mapa de imágenes locales por nombre de producto
 const imagenPorNombre: Record<string, string> = {
   "Tote Bag Reciclada": "/imagenes/tote_bag.jpg",
   "Botella Reutilizable": "/imagenes/botella.jpg",
@@ -19,31 +18,42 @@ const imagenPorNombre: Record<string, string> = {
 };
 
 const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) => {
-  const [cantidad, setCantidad] = useState(1);
+  const [cantidad, setCantidad] = useState(0);
   const [loading, setLoading] = useState(false);
   const [agregado, setAgregado] = useState(false);
 
   const handleAgregar = async () => {
     setLoading(true);
     try {
-      await onAgregar(producto.id, cantidad);
-      setAgregado(true);
+      await onAgregar(producto.id, 1);
       setCantidad(1);
-      setTimeout(() => setAgregado(false), 2000);
+      setAgregado(true);
+      setTimeout(() => setAgregado(false), 1500);
     } finally {
       setLoading(false);
     }
   };
 
+  const handleSumar = async () => {
+    if (cantidad >= producto.stock) return;
+    const nueva = cantidad + 1;
+    setCantidad(nueva);
+    await onAgregar(producto.id, 1);
+  };
+
+  const handleRestar = () => {
+    const nueva = cantidad - 1;
+    setCantidad(nueva);
+    // Si quieres también restar en el backend, aquí llamarías al servicio
+  };
+
   const imagenSrc = producto.imagenUrl || imagenPorNombre[producto.nombre];
 
+  // Stock disponible restando lo que ya está en el contador local
+  const stockRestante = producto.stock - cantidad;
+
   return (
-    <div
-      className="card h-100 shadow-sm"
-      style={{ transition: "transform 0.2s ease" }}
-      onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-4px)")}
-      onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-    >
+    <div className="card h-100 shadow-sm">
       {/* Imagen */}
       <div
         style={{
@@ -61,11 +71,7 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) => {
           <img
             src={imagenSrc}
             alt={producto.nombre}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "contain",
-            }}
+            style={{ width: "100%", height: "100%", objectFit: "contain" }}
           />
         ) : (
           <span style={{ fontSize: "3rem" }}>📦</span>
@@ -115,48 +121,88 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) => {
           {formatCurrency(producto.precio)}
         </p>
 
-        <small style={{ color: "var(--color-800)" }}>
-          {producto.stock > 0 ? `${producto.stock} disponibles` : "Sin stock"}
+        {/* Stock: muestra el restante en tiempo real */}
+        <small style={{ color: stockRestante <= 5 ? "#b03a3a" : "var(--color-800)" }}>
+          {stockRestante > 0 ? `${stockRestante} disponibles` : "Sin stock"}
         </small>
 
-        <div className="d-flex align-items-center gap-2 mt-auto pt-2">
-          <div className="d-flex align-items-center gap-2">
-            <button
-              className="btn btn-outline-primary btn-sm"
-              onClick={() => setCantidad((prev) => Math.max(1, prev - 1))}
-              disabled={cantidad <= 1}
+        {/* Botón o Contador */}
+        <div className="mt-auto pt-2">
+          {cantidad === 0 ? (
+            /* ── Botón Agregar inicial ── */
+            <div
+              style={{ transition: "transform 0.2s ease" }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
             >
-              −
-            </button>
-            <span
+              <Button
+                size="sm"
+                fullWidth
+                loading={loading}
+                disabled={producto.stock === 0}
+                onClick={handleAgregar}
+              >
+                {agregado ? "Agregado ✓" : "Agregar"}
+              </Button>
+            </div>
+          ) : (
+            /* ── Contador − n + ── */
+            <div
+              className="d-flex align-items-center justify-content-between"
               style={{
-                minWidth: "1.5rem",
-                textAlign: "center",
-                fontWeight: "var(--font-semibold)",
-                color: "var(--color-900)",
+                backgroundColor: "var(--color-900)",
+                borderRadius: "var(--radius-md)",
+                padding: "0.3rem 0.5rem",
               }}
             >
-              {cantidad}
-            </span>
-            <button
-              className="btn btn-outline-primary btn-sm"
-              onClick={() => setCantidad((prev) => Math.min(producto.stock, prev + 1))}
-              disabled={cantidad >= producto.stock}
-            >
-              +
-            </button>
-          </div>
+              <button
+                style={{
+                  color: "var(--color-white)",
+                  fontWeight: "bold",
+                  fontSize: "1.2rem",
+                  lineHeight: 1,
+                  padding: "0 0.5rem",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+                onClick={handleRestar}
+              >
+                −
+              </button>
 
-          <Button
-            size="sm"
-            fullWidth
-            loading={loading}
-            disabled={producto.stock === 0}
-            onClick={handleAgregar}
-          >
-            {agregado ? "Agregado ✓" : "Agregar"}
-          </Button>
+              <span
+                style={{
+                  color: "var(--color-white)",
+                  fontWeight: "var(--font-bold)",
+                  fontSize: "var(--text-sm)",
+                  minWidth: "1.5rem",
+                  textAlign: "center",
+                }}
+              >
+                {cantidad}
+              </span>
+
+              <button
+                style={{
+                  color: cantidad >= producto.stock ? "rgba(255,255,255,0.35)" : "var(--color-white)",
+                  fontWeight: "bold",
+                  fontSize: "1.2rem",
+                  lineHeight: 1,
+                  padding: "0 0.5rem",
+                  background: "none",
+                  border: "none",
+                  cursor: cantidad >= producto.stock ? "not-allowed" : "pointer",
+                }}
+                onClick={handleSumar}
+                disabled={cantidad >= producto.stock}
+              >
+                +
+              </button>
+            </div>
+          )}
         </div>
+
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { productoService, type ProductoResponse } from "../services/productoService";
 import { carritoService } from "../services/carritoService";
 import { useCarrito } from "../hooks/useCarrito";
@@ -11,24 +11,29 @@ const ProductosPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const cargarProductos = async () => {
-      setLoading(true);
-      try {
-        const data = await productoService.listarProductos();
-        setProductos(data);
-      } catch {
-        setError("Error al cargar los productos");
-      } finally {
-        setLoading(false);
-      }
-    };
-    cargarProductos();
+  // Extraemos la carga en un useCallback para poder reutilizarla
+  const cargarProductos = useCallback(async () => {
+    setLoading(true);
+    try {
+      const data = await productoService.listarProductos();
+      setProductos(data);
+      setError("");
+    } catch {
+      setError("Error al cargar los productos");
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    cargarProductos();
+  }, [cargarProductos]);
 
   const handleAgregar = async (productoId: number, cantidad: number) => {
     await carritoService.agregarItem({ productoId, cantidad });
     await recargarCarrito();
+    // Recargamos productos para reflejar el stock actualizado
+    await cargarProductos();
   };
 
   return (

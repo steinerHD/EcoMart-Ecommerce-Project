@@ -21,7 +21,3 @@ INSERT INTO productos (nombre, descripcion, precio, stock, categoria_id) VALUES
 INSERT INTO usuarios (nombre, apellido, email, password_hash, rol) VALUES
     ('Admin', 'EcoMart', 'admin@ecomart.com',
      '\$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'admin');
-
-INSERT INTO usuarios (nombre, apellido, email, password_hash, rol) VALUES
-    ('Andres', 'Camacho', 'Camilo@ecomart.com',
-     '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.S8qZJIRV6AnjgxtG', 'admin');

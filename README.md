@@ -234,7 +234,7 @@ El proyecto incluye pruebas unitarias realizadas con:
 
 ---
 Para ejecutar pruebas unitarias
-cd backend
+cd backend - 2 veces
 mvn clean test
 En target en la carpeta site se crea el index.html de jcoco en el cual sale la cobertura
 ---

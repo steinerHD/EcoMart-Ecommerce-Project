@@ -113,7 +113,7 @@ const CarritoItem = ({ item, onEliminar, onActualizar }: CarritoItemProps) => {
         <button
           className="btn btn-outline-primary btn-sm"
           onClick={() => handleCantidad(cantidad + 1)}
-          disabled={actualizando || eliminando}
+          disabled={cantidad >= item.stock || actualizando || eliminando}
         >
           +
         </button>

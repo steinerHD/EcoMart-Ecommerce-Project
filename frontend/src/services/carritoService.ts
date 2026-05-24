@@ -8,6 +8,7 @@ export interface ItemCarritoResponse {
   precioUnitario: number;
   cantidad: number;
   subtotal: number;
+  stock: number;
 }
 
 export interface CarritoResponse {

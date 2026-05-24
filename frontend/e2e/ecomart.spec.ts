@@ -110,3 +110,119 @@ test.describe("Autenticación", () => {
     expect(lsUserStr).toBeTruthy();
   });
 });
+test.describe("Registro", () => {
+
+  test.beforeEach(async ({ page }) => {
+    await page.goto("/register");
+  });
+
+  test("registro exitoso", async ({ page }) => {
+
+    await page.route("**/api/auth/register", async (route) => {
+      await route.fulfill({
+        status: 201,
+        contentType: "application/json",
+        body: JSON.stringify({
+          mensaje: "Usuario registrado"
+        }),
+      });
+    });
+
+    await page.locator("#nombre").fill("Juan");
+    await page.locator("#apellido").fill("Pérez");
+    await page.locator("#email").fill("juan@test.com");
+    await page.locator("#password").fill("Password123!");
+
+    await page.getByRole("button", {
+      name: /crear cuenta/i
+    }).click();
+
+    // validar redirección
+    await expect(page).toHaveURL(/login/);
+  });
+
+  test("error backend registro", async ({ page }) => {
+
+    await page.route("**/api/auth/register", async (route) => {
+      await route.fulfill({
+        status: 400,
+        contentType: "application/json",
+        body: JSON.stringify({
+          mensaje: "El correo ya existe"
+        }),
+      });
+    });
+
+    await page.locator("#nombre").fill("Juan");
+    await page.locator("#apellido").fill("Pérez");
+    await page.locator("#email").fill("juan@test.com");
+    await page.locator("#password").fill("Password123!");
+
+    await page.getByRole("button", {
+      name: /crear cuenta/i
+    }).click();
+
+    await expect(
+      page.locator(".alert-danger")
+    ).toContainText("El correo ya existe");
+  });
+
+});
+
+
+test.describe("Productos", () => {
+
+  test.beforeEach(async ({ page }) => {
+
+    // simular login
+    await page.goto("/login");
+
+    await page.evaluate(() => {
+      localStorage.setItem("token", "fake-token");
+
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          nombre: "Pepe",
+          apellido: "Tono",
+          email: "test@test.com",
+        })
+      );
+    });
+
+    // mock productos
+    await page.route("**/api/productos", async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify([
+          {
+            id: 1,
+            nombre: "Laptop",
+            descripcion: "Laptop gamer",
+            precio: 5000,
+            stock: 10,
+            imagenUrl: "",
+            categoriaNombre: "Tecnología",
+            activo: true,
+          },
+        ]),
+      });
+    });
+
+    await page.goto("/productos");
+  });
+
+  test("renderiza productos", async ({ page }) => {
+
+    const card = page.locator(".card").first();
+
+    await expect(card).toContainText("Laptop");
+
+    await expect(card).toContainText(/5000|5\.000|\$5,000/);
+
+    await expect(
+      card.getByRole("button", { name: /agregar/i })
+    ).toBeVisible();
+  });
+});

@@ -25,5 +25,6 @@ public class CarritoResponse {
         private BigDecimal precioUnitario;
         private Integer cantidad;
         private BigDecimal subtotal;
+        private Integer stock;
     }
 }

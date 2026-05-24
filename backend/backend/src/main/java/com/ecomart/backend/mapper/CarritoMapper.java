@@ -47,6 +47,7 @@ public class CarritoMapper {
                 .precioUnitario(item.getPrecioUnitario())
                 .cantidad(item.getCantidad())
                 .subtotal(subtotal)
+                .stock(item.getProducto().getStock())
                 .build();
     }
 

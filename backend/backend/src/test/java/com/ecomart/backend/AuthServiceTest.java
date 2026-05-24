@@ -1,5 +1,6 @@
-package com.ecomart.backend.service;
+package com.ecomart.backend;
 
+import com.ecomart.backend.service.AuthService;
 import com.ecomart.backend.dto.request.LoginRequest;
 import com.ecomart.backend.dto.request.RegisterRequest;
 import com.ecomart.backend.dto.response.AuthResponse;
@@ -151,4 +152,3 @@ class AuthServiceTest {
         assertEquals("Juan", response.getNombre());
     }
 }
-

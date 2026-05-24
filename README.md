@@ -223,6 +223,37 @@ cd frontend && npm run dev
 
 ---
 
+# Ejecución de pruebas unitarias
+
+El proyecto incluye pruebas unitarias realizadas con:
+
+- JUnit 5
+- Mockito
+- JaCoCo
+- Spring Boot Test
+
+---
+Para ejecutar pruebas unitarias
+cd backend
+mvn clean test
+En target en la carpeta site se crea el index.html de jcoco en el cual sale la cobertura
+---
+
+## 📋 Requisitos
+
+Antes de ejecutar las pruebas, asegúrese de tener instalado:
+
+- Java 21
+- Maven 3.9+
+- PostgreSQL configurado (si desea ejecutar la aplicación completa)
+
+Verificar versiones:
+
+```bash
+java -version
+mvn -version
+
+
 ## 👥 Equipo
 
 | Nombre | Código |

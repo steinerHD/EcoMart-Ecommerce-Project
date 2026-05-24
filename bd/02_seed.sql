@@ -16,8 +16,3 @@ INSERT INTO productos (nombre, descripcion, precio, stock, categoria_id) VALUES
     ('Botella Reutilizable','Acero inoxidable 500ml',            45000, 75,  3),
     ('Cuaderno Kraft',      'Papel reciclado 200 páginas',       18000, 200, 3),
     ('Jabón Artesanal',     'Hecho a mano con aceites naturales',12000, 150, 4);
-
--- Usuario admin
-INSERT INTO usuarios (nombre, apellido, email, password_hash, rol) VALUES
-    ('Admin', 'EcoMart', 'admin@ecomart.com',
-     '\$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'admin');

@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">90.9% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/20</span>
+                <span class='fraction'>20/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">91.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/10</span>
+                <span class='fraction'>11/12</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.11% </span>
+                <span class="strong">94.73% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/17</span>
+                <span class='fraction'>18/19</span>
             </div>
         
             
@@ -227,15 +227,18 @@
 <a name='L162'></a><a href='#L162'>162</a>
 <a name='L163'></a><a href='#L163'>163</a>
 <a name='L164'></a><a href='#L164'>164</a>
-<a name='L165'></a><a href='#L165'>165</a>
-<a name='L166'></a><a href='#L166'>166</a>
-<a name='L167'></a><a href='#L167'>167</a>
-<a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a>
-<a name='L170'></a><a href='#L170'>170</a>
-<a name='L171'></a><a href='#L171'>171</a>
-<a name='L172'></a><a href='#L172'>172</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L165'></a><a href='#L165'>165</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -263,12 +266,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -350,18 +352,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -379,11 +369,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -415,6 +401,16 @@ interface ProductoCardProps {
   onAgregar: (productoId: number, cantidad: number) =&gt; Promise&lt;void&gt;;
 }
 &nbsp;
+// Mapa de imágenes locales por nombre de producto
+const imagenPorNombre: Record&lt;string, string&gt; = {
+  "Tote Bag Reciclada": "/imagenes/tote_bag.jpg",
+  "Botella Reutilizable": "/imagenes/botella.jpg",
+  "Cuaderno Kraft": "/imagenes/cuaderno.jpg",
+  "Camiseta Eco": "/imagenes/camiseta.jpg",
+  "Jabón Natural": "/imagenes/ja.jpg",
+  "Jabón Artesanal": "/imagenes/ja.jpg",
+};
+&nbsp;
 const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) =&gt; {
   const [cantidad, setCantidad] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -432,34 +428,37 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) =&gt; {
     }
   };
 &nbsp;
+  const imagenSrc = producto.imagenUrl || imagenPorNombre[producto.nombre];
+&nbsp;
   return (
     &lt;div
       className="card h-100 shadow-sm"
       style={{ transition: "transform 0.2s ease" }}
-      onMouseEnter={(e) =&gt;
-        (e.currentTarget.style.transform = "translateY(-4px)")
-      }
-<span class="fstat-no" title="function not covered" >      onMouseLeave={(e</span>) =&gt;
-        (<span class="cstat-no" title="statement not covered" >e.currentTarget.style.transform = "translateY(0)")</span>
-      }
+      onMouseEnter={(e) =&gt; (e.currentTarget.style.transform = "translateY(-4px)")}
+<span class="fstat-no" title="function not covered" >      onMouseLeave={(e</span>) =&gt; (<span class="cstat-no" title="statement not covered" >e.currentTarget.style.transform = "translateY(0)")}</span>
     &gt;
       {/* Imagen */}
       &lt;div
         style={{
-          height: "180px",
-          backgroundColor: "var(--color-300)",
+          height: "140px",
+          backgroundColor: "var(--color-50)",
           borderRadius: "var(--radius-lg) var(--radius-lg) 0 0",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
+          padding: "0.5rem",
         }}
       &gt;
-        {producto.imagenUrl ? (
+        {imagenSrc ? (
 <span class="branch-0 cbranch-no" title="branch not covered" >          &lt;img</span>
-            src={producto.imagenUrl}
+            src={imagenSrc}
             alt={producto.nombre}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+            }}
           /&gt;
         ) : (
           &lt;span style={{ fontSize: "3rem" }}&gt;📦&lt;/span&gt;
@@ -469,28 +468,19 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) =&gt; {
       {/* Body */}
       &lt;div className="card-body d-flex flex-column gap-2"&gt;
 &nbsp;
-        {/* Categoria */}
         {producto.categoriaNombre &amp;&amp; (
-          &lt;span
-            className="badge bg-primary"
-            style={{ alignSelf: "flex-start" }}
-          &gt;
+          &lt;span className="badge bg-primary" style={{ alignSelf: "flex-start" }}&gt;
             {producto.categoriaNombre}
           &lt;/span&gt;
         )}
 &nbsp;
-        {/* Nombre */}
         &lt;h5
           className="mb-0"
-          style={{
-            fontFamily: "var(--font-display)",
-            color: "var(--color-900)",
-          }}
+          style={{ fontFamily: "var(--font-display)", color: "var(--color-900)" }}
         &gt;
           {producto.nombre}
         &lt;/h5&gt;
 &nbsp;
-        {/* Descripcion */}
         {producto.descripcion &amp;&amp; (
           &lt;p
             className="mb-0"
@@ -507,7 +497,6 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) =&gt; {
           &lt;/p&gt;
         )}
 &nbsp;
-        {/* Precio */}
         &lt;p
           className="mb-0"
           style={{
@@ -519,17 +508,11 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) =&gt; {
           {formatCurrency(producto.precio)}
         &lt;/p&gt;
 &nbsp;
-        {/* Stock */}
         &lt;small style={{ color: "var(--color-800)" }}&gt;
-          {producto.stock &gt; 0
-            ? `${producto.stock} disponibles`
-            : "Sin stock"}
+          {producto.stock &gt; 0 ? `${producto.stock} disponibles` : "Sin stock"}
         &lt;/small&gt;
 &nbsp;
-        {/* Selector cantidad y botón */}
         &lt;div className="d-flex align-items-center gap-2 mt-auto pt-2"&gt;
-&nbsp;
-          {/* Control cantidad */}
           &lt;div className="d-flex align-items-center gap-2"&gt;
             &lt;button
               className="btn btn-outline-primary btn-sm"
@@ -550,16 +533,13 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) =&gt; {
             &lt;/span&gt;
             &lt;button
               className="btn btn-outline-primary btn-sm"
-              onClick={() =&gt;
-                setCantidad((prev) =&gt; Math.min(producto.stock, prev + 1))
-              }
+              onClick={() =&gt; setCantidad((prev) =&gt; Math.min(producto.stock, prev + 1))}
               disabled={cantidad &gt;= producto.stock}
             &gt;
               +
             &lt;/button&gt;
           &lt;/div&gt;
 &nbsp;
-          {/* Botón agregar */}
           &lt;Button
             size="sm"
             fullWidth
@@ -569,7 +549,6 @@ const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) =&gt; {
           &gt;
             {agregado ? "Agregado ✓" : "Agregar"}
           &lt;/Button&gt;
-&nbsp;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -583,7 +562,7 @@ export default ProductoCard;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-03T21:33:22.057Z
+                at 2026-05-24T17:13:50.187Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

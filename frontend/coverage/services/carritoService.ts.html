@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -180,38 +180,38 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import api from "./api";
 &nbsp;
@@ -256,37 +256,37 @@ export interface PedidoResponse {
 }
 &nbsp;
 export const carritoService = {
-  obtenerCarrito: <span class="fstat-no" title="function not covered" >async (): Promise&lt;CarritoResponse&gt; =&gt; {</span>
-    const response = <span class="cstat-no" title="statement not covered" >await api.get&lt;CarritoResponse&gt;("/carrito");</span>
-<span class="cstat-no" title="statement not covered" >    return response.data;</span>
+  obtenerCarrito: async (): Promise&lt;CarritoResponse&gt; =&gt; {
+    const response = await api.get&lt;CarritoResponse&gt;("/carrito");
+    return response.data;
   },
 &nbsp;
-  agregarItem: <span class="fstat-no" title="function not covered" >async (d</span>ata: AgregarItemRequest): Promise&lt;CarritoResponse&gt; =&gt; {
-    const response = <span class="cstat-no" title="statement not covered" >await api.post&lt;CarritoResponse&gt;("/carrito/items", data);</span>
-<span class="cstat-no" title="statement not covered" >    return response.data;</span>
+  agregarItem: async (data: AgregarItemRequest): Promise&lt;CarritoResponse&gt; =&gt; {
+    const response = await api.post&lt;CarritoResponse&gt;("/carrito/items", data);
+    return response.data;
   },
 &nbsp;
-  actualizarItem: <span class="fstat-no" title="function not covered" >async (</span>
+  actualizarItem: async (
     id: number,
     data: ActualizarItemRequest
   ): Promise&lt;CarritoResponse&gt; =&gt; {
-    const response = <span class="cstat-no" title="statement not covered" >await api.put&lt;CarritoResponse&gt;(</span>
+    const response = await api.put&lt;CarritoResponse&gt;(
       `/carrito/items/${id}`,
       data
     );
-<span class="cstat-no" title="statement not covered" >    return response.data;</span>
+    return response.data;
   },
 &nbsp;
-  eliminarItem: <span class="fstat-no" title="function not covered" >async (i</span>d: number): Promise&lt;CarritoResponse&gt; =&gt; {
-    const response = <span class="cstat-no" title="statement not covered" >await api.delete&lt;CarritoResponse&gt;(</span>
+  eliminarItem: async (id: number): Promise&lt;CarritoResponse&gt; =&gt; {
+    const response = await api.delete&lt;CarritoResponse&gt;(
       `/carrito/items/${id}`
     );
-<span class="cstat-no" title="statement not covered" >    return response.data;</span>
+    return response.data;
   },
 &nbsp;
-  checkout: <span class="fstat-no" title="function not covered" >async (): Promise&lt;PedidoResponse&gt; =&gt; {</span>
-    const response = <span class="cstat-no" title="statement not covered" >await api.post&lt;PedidoResponse&gt;("/carrito/checkout");</span>
-<span class="cstat-no" title="statement not covered" >    return response.data;</span>
+  checkout: async (): Promise&lt;PedidoResponse&gt; =&gt; {
+    const response = await api.post&lt;PedidoResponse&gt;("/carrito/checkout");
+    return response.data;
   },
 };</pre></td></tr></table></pre>
 
@@ -295,7 +295,7 @@ export const carritoService = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-03T21:33:22.057Z
+                at 2026-05-24T17:13:50.187Z
             </div>
         <script src="../prettify.js"></script>
         <script>

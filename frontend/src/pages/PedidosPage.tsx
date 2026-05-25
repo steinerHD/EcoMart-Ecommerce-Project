@@ -100,21 +100,37 @@ const PedidosPage = () => {
   // ─────────────────────────────────────────
 
   return (
-    <div className="container py-5">
+    <div
+      style={{
+        width: "100%",
+        backgroundImage:
+          "linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.28)), url(/imagenes/super.jpg)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="container py-5">
+        <div
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.96)",
+            borderRadius: "var(--radius-lg)",
+            padding: "1.5rem",
+          }}
+        >
+          {/* Título */}
+          <div className="mb-4">
+          <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-900)", marginBottom: "0.5rem" }}>
+            Mis pedidos
+          </h2>
+          <p style={{ color: "var(--color-300)", marginBottom: 0 }}>
+            {pedidos.length}{" "}
+            {pedidos.length === 1 ? "pedido realizado" : "pedidos realizados"}
+          </p>
+        </div>
 
-      {/* Título */}
-      <div className="mb-4">
-        <h2 style={{ fontFamily: "var(--font-display)" }}>
-          Mis pedidos
-        </h2>
-        <p style={{ color: "var(--color-300)" }}>
-          {pedidos.length}{" "}
-          {pedidos.length === 1 ? "pedido realizado" : "pedidos realizados"}
-        </p>
-      </div>
-
-      {/* Lista */}
-      {pedidos.map((pedido) => (
+        {/* Lista */}
+        {pedidos.map((pedido) => (
         <div
           key={pedido.id}
           className="mb-3"
@@ -233,7 +249,9 @@ const PedidosPage = () => {
 
         </div>
       ))}
+      </div>
     </div>
+  </div>
   );
 };
 

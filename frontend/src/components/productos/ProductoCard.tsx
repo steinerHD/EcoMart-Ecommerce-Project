@@ -15,6 +15,11 @@ const imagenPorNombre: Record<string, string> = {
   "Camiseta Eco": "/imagenes/camiseta.jpg",
   "Jabón Natural": "/imagenes/ja.jpg",
   "Jabón Artesanal": "/imagenes/ja.jpg",
+  "Set de Cubiertos Reutilizables": "/imagenes/Set de Cubiertos Reutilizables.jpg",
+  "Mochila Ecológica": "/imagenes/Mochila Ecológica.jpg",
+  "Cepillo Dental de Bambú": "/imagenes/Cepillo Dental de Bambú.png",
+  "Vela Aromática Natural": "/imagenes/Vela Aromática Natural.jpg",
+  "Almohada de Algodón Orgánico": "/imagenes/Almohada de Algodón Orgánico.jpg",
 };
 
 const ProductoCard = ({ producto, onAgregar }: ProductoCardProps) => {

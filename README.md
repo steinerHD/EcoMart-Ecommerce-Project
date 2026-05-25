@@ -100,9 +100,10 @@ Click derecho en `ecomart_db` → **Query Tool**, luego abre y ejecuta los archi
 2. `bd/02_seed.sql`
 
 Luego después de ejecutar estos dos archivos en el Query Tool, la base de datos estará montada pero necesitamos que el usuario tenga permisos, asi que ejecutaremos la siguiente linea:
-
+`
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ecomart_user;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO ecomart_user;
+`
 
 Una vez ejecutado ese script ya tienes los permisos.
 
@@ -150,7 +151,7 @@ jwt.expiration=86400000
 Abre **una terminal** dentro de la carpeta del proyecto y ejecuta:
 
 ```bash
-cd backend
+cd backend/backend
 mvn spring-boot:run
 ```
 

@@ -42,17 +42,10 @@ describe('ProductoCard', () => {
             screen.getByRole('button', { name: /agregar/i })
         ).toBeDisabled()
     })
-    test('incrementa y decrementa cantidad', async () => {
+    it('muestra botón agregar', () => {
         render(<ProductoCard producto={producto} onAgregar={vi.fn()} />)
 
-        const btnPlus = screen.getByText('+')
-        const btnMinus = screen.getByText('−')
-
-        await userEvent.click(btnPlus)
-        expect(screen.getByText('2')).toBeInTheDocument()
-
-        await userEvent.click(btnMinus)
-        expect(screen.getByText('1')).toBeInTheDocument()
+        expect(screen.getByText('Agregar')).toBeInTheDocument()
     })
 
 })

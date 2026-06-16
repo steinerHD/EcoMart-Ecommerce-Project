@@ -11,6 +11,17 @@ Universidad Autónoma de Occidente
 | `backend/` | Spring Boot 3 + Java 21 | API REST con autenticación JWT |
 | `frontend/` | React + Vite | Interfaz de usuario |
 
+## Vista previa
+
+<img width="1919" height="880" alt="image" src="https://github.com/user-attachments/assets/2529d533-8e95-499c-b085-b6f5724ca952" />
+<img width="1919" height="889" alt="image" src="https://github.com/user-attachments/assets/d11350bb-74a1-4ab6-a603-64535e0664d9" />
+<img width="1919" height="879" alt="image" src="https://github.com/user-attachments/assets/45e52201-6d77-442c-9731-b320dd8534b3" />
+<img width="1919" height="881" alt="image" src="https://github.com/user-attachments/assets/899d8231-9635-4ec2-9703-e0fb31f402aa" />
+<img width="1919" height="882" alt="image" src="https://github.com/user-attachments/assets/3500cd77-1aa1-4352-8a7f-1be869422383" />
+
+
+
+
 ## Stack
 
 <<<<<<< Updated upstream
